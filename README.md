@@ -10,9 +10,11 @@ Um jogo da forca completo com menu interativo, categorias e níveis de dificulda
 ✅ **Mecânica de tentativas** com feedback claro  
 
 ## 📦 Estrutura do Projeto
+```
 jogo-da-forca/
-├── jogo_da_forca.py # Código principal
-├── README.md # Este arquivo
+├── jogo_da_forca.py    # Código principal
+├── README.md           # Documentação
+```
 
 ## 🚀 Como Executar
 ```bash
