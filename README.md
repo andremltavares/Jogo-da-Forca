@@ -1,29 +1,35 @@
 # 🎮 Jogo da Forca em Python
 
-Um clássico jogo da forca implementado em Python, onde o jogador tenta adivinhar uma palavra letra por letra antes de esgotar todas as tentativas.
+Um jogo da forca completo com menu interativo, categorias e níveis de dificuldade.
 
-## 📝 Descrição
+## ✨ Novas Funcionalidades
+✅ **Menu dinâmico** com navegação intuitiva  
+✅ **Sistema de categorias** (tecnologia, animais, frutas)  
+✅ **Dificuldade ajustável** (Fácil, Normal, Difícil)  
+✅ **Validação robusta** de inputs do jogador  
+✅ **Mecânica de tentativas** com feedback claro  
 
-Este projeto é uma implementação simples do jogo da forca no terminal, desenvolvido em Python. O jogador tem 6 tentativas para adivinhar a palavra secreta, podendo errar até 6 letras antes de perder o jogo.
-
-## ✨ Funcionalidades
-
-- Seleção aleatória de palavras de uma lista pré-definida
-- Contagem de tentativas restantes
-- Registro de letras já tentadas
-- Feedback imediato sobre letras corretas e incorretas
-- Interface simples no terminal com emojis visuais
-
-## 📥 Requisitos
-
-- Python 3.x instalado
-- Módulo `random` (já incluído na biblioteca padrão do Python)
+## 📦 Estrutura do Projeto
+jogo-da-forca/
+├── jogo_da_forca.py # Código principal
+├── README.md # Este arquivo
 
 ## 🚀 Como Executar
-
-1. Clone o repositório ou copie o código para um ficheiro com extensão `.py` (por exemplo, `forca.py`)
-2. Abra o terminal/linha de comandos na pasta do projeto
-3. Execute o comando:
-
 ```bash
+# 1. Clone o repositório
+git clone https://github.com/andremltavares/Jogo-da-Forca.git
+
+# 2. Acesse a pasta
+cd jogo-da-forca
+
+# 3. Execute o jogo
 python jogo_da_forca.py
+
+🎮 Controles do Menu
+Tecla	Ação
+1	Iniciar jogo rápido
+2	Escolher categoria
+3	Ajustar dificuldade
+4	Ver estatísticas (em breve)
+5	Sobre o jogo
+6	Sair
