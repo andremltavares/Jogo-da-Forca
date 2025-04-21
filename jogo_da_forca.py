@@ -1,6 +1,8 @@
 
 import random
 
+historico_pontuacoes = []
+
 # Lista de palavras para o jogo
 palavras = {
     "tecnologia": ["python", "computador", "janela", "teclado", "monitor"],
@@ -102,9 +104,22 @@ def jogar(categoria=None, tentativas=6):
                 print(f"Letra incorreta! Restam {tentativas} tentativas.")
 
     if "_" not in letras_descobertas:
+        pontos = calcular_pontuacoes(palavra_secreta, tentativas, len(letras_erradas))
+        historico_pontuacoes.append(pontos)
+        print(f"\n🌟 Pontuação: {pontos} (Melhor: {max(historico_pontuacoes) if historico_pontuacoes else 'N/A'})")
         print(f"\nPARABÉNS! Você acertou: {palavra_secreta.upper()}")
     else:
         print(f"\nFIM DE JOGO! A palavra era: {palavra_secreta.upper()}")
+
+def calcular_pontuacoes(palavra, tentativas_restantes, erros):
+    """A pontuação é calculada baseada em:
+    - Tamanho da palavra
+    - Tentativas não usadas
+    - Erros cometidos"""
+    pontos = len(palavra) * 5
+    pontos += tentativas_restantes * 2
+    pontos -= erros * 3
+    return max(10, pontos)
 
 def main():
     config = {
