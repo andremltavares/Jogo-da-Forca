@@ -1,48 +1,48 @@
-# 🎮 Jogo da Forca em Python
+# 🎮 Python Hangman Game
 
-Um jogo da forca completo com validação robusta e sistema de categorias.
+A complete Hangman implementation with robust validation and category system.
 
-## ✨ Funcionalidades
+## ✨ Features
 | Feature | Status |
 |---------|--------|
-| Menu interativo | ✅ Implementado |
-| 3 categorias de palavras | ✅ Implementado |
-| 3 níveis de dificuldade | ✅ Implementado |
-| Sistema de ponutação básico | ✅ Implementado |
-| Validação de inputs | ✅ Melhorado |
-| Forca ASCII | 🔜 Em breve |
+| Interactive Menu | ✅ Implemented |
+| 3 Word Categories | ✅ Implemented |
+| 3 Difficulty Levels | ✅ Implemented |
+| Input Validation | ✅ Improved |
+| ASCII Hangman | 🔜 Coming Soon |
 
-## 🐛 Correções Recentes
+## 🐛 Recent Fixes
 ```diff
-+ Corrigida validação do menu principal
-+ Comparação numérica de opções
-+ Mensagens de erro mais claras
++ Fixed main menu validation
++ Numeric option comparison
++ Clearer error messages
 ```
 
-## 📦 Estrutura do Projeto
+## 📦 Project Structure
 ```
 jogo-da-forca/
-├── jogo_da_forca.py    # Código principal
-├── README.md           # Documentação
+├── jogo_da_forca.py    # Main code
+├── README.md           # Documentation
 ```
 
-## 🚀 Como Executar
+## 🚀 How to run
 ```bash
-# 1. Clone o repositório
+# 1. Clone repository
 git clone https://github.com/andremltavares/Jogo-da-Forca.git
 
-# 2. Acesse a pasta
-cd jogo-da-forca
+# 2. Enter folder
+cd hangman-game
 
-# 3. Execute o jogo
-python jogo_da_forca.py
+# 3. Run game
+python hangman.py
 
 🎮 Menu
-Tecla	Ação
-1	Iniciar jogo rápido
-2	Escolher categoria
-3	Ajustar dificuldade
-4	Ver estatísticas (em breve)
-5	Sobre o jogo
-6	Sair
+Key	Action
+1	Quick Start
+2	Choose Category
+3	Set Difficulty
+4	View Stats (Coming Soon)
+5	About Game
+6	Exit
+```
 
