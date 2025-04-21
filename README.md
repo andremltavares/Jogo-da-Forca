@@ -8,6 +8,7 @@ A complete Hangman implementation with robust validation and category system.
 | Interactive Menu | ✅ Implemented |
 | 3 Word Categories | ✅ Implemented |
 | 3 Difficulty Levels | ✅ Implemented |
+| Basic Scoring System | ✅ Implemented |
 | Input Validation | ✅ Improved |
 | ASCII Hangman | 🔜 Coming Soon |
 
