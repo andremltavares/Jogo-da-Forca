@@ -16,6 +16,7 @@ Um jogo da forca completo com validação robusta e sistema de categorias.
 + Corrigida validação do menu principal
 + Comparação numérica de opções
 + Mensagens de erro mais claras
+```
 
 ## 📦 Estrutura do Projeto
 ```
