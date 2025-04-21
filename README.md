@@ -1,13 +1,21 @@
 # 🎮 Jogo da Forca em Python
 
-Um jogo da forca completo com menu interativo, categorias e níveis de dificuldade.
+Um jogo da forca completo com validação robusta e sistema de categorias.
 
-## ✨ Novas Funcionalidades
-✅ **Menu dinâmico** com navegação intuitiva  
-✅ **Sistema de categorias** (tecnologia, animais, frutas)  
-✅ **Dificuldade ajustável** (Fácil, Normal, Difícil)  
-✅ **Validação robusta** de inputs do jogador  
-✅ **Mecânica de tentativas** com feedback claro  
+## ✨ Funcionalidades
+| Feature | Status |
+|---------|--------|
+| Menu interativo | ✅ Implementado |
+| 3 categorias de palavras | ✅ Implementado |
+| 3 níveis de dificuldade | ✅ Implementado |
+| Validação de inputs | ✅ Aprimorado |
+| Forca ASCII | 🔜 Em breve |
+
+## 🐛 Correções Recentes
+```diff
++ Corrigida validação do menu principal
++ Comparação numérica de opções
++ Mensagens de erro mais claras
 
 ## 📦 Estrutura do Projeto
 ```
@@ -35,3 +43,4 @@ Tecla	Ação
 4	Ver estatísticas (em breve)
 5	Sobre o jogo
 6	Sair
+
