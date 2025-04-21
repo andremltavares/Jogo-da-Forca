@@ -8,6 +8,7 @@ Um jogo da forca completo com validação robusta e sistema de categorias.
 | Menu interativo | ✅ Implementado |
 | 3 categorias de palavras | ✅ Implementado |
 | 3 níveis de dificuldade | ✅ Implementado |
+| Sistema de ponutação básico | ✅ Implementado |
 | Validação de inputs | ✅ Melhorado |
 | Forca ASCII | 🔜 Em breve |
 
