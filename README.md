@@ -8,7 +8,7 @@ Um jogo da forca completo com validação robusta e sistema de categorias.
 | Menu interativo | ✅ Implementado |
 | 3 categorias de palavras | ✅ Implementado |
 | 3 níveis de dificuldade | ✅ Implementado |
-| Validação de inputs | ✅ Aprimorado |
+| Validação de inputs | ✅ Melhorado |
 | Forca ASCII | 🔜 Em breve |
 
 ## 🐛 Correções Recentes
@@ -36,7 +36,7 @@ cd jogo-da-forca
 # 3. Execute o jogo
 python jogo_da_forca.py
 
-🎮 Controles do Menu
+🎮 Menu
 Tecla	Ação
 1	Iniciar jogo rápido
 2	Escolher categoria
