@@ -32,10 +32,10 @@ jogo-da-forca/
 git clone https://github.com/andremltavares/Jogo-da-Forca.git
 
 # 2. Enter folder
-cd hangman-game
+cd jogo-da-forca
 
 # 3. Run game
-python hangman.py
+python jogo_da_forca.py
 
 🎮 Menu
 Key	Action
