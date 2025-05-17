@@ -10,7 +10,8 @@ A complete Hangman implementation with robust validation and category system.
 | 3 Difficulty Levels | ✅ Implemented |
 | Basic Scoring System | ✅ Implemented |
 | Input Validation | ✅ Improved |
-| ASCII Hangman | 🔜 Coming Soon |
+| ASCII Hangman | ✅ Implemented |
+| New features | 🔜 Coming Soon |
 
 ## 🐛 Recent Fixes
 ```diff
