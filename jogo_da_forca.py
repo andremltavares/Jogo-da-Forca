@@ -1,4 +1,3 @@
-
 import random
 
 historico_pontuacoes = []
@@ -9,6 +8,73 @@ palavras = {
     "animais": ["girafa", "elefante", "leopardo", "rinoceronte"],
     "frutas": ["banana", "abacaxi", "morango", "laranja"]
 }
+
+# Arte ASCII para o jogo da forca
+hangman_art = [
+    """
+       ------
+       |    |
+       |
+       |
+       |
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |
+       |
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |    |
+       |
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |   /|
+       |
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |   /
+       |
+    --------
+    """,
+    """
+       ------
+       |    |
+       |    O
+       |   /|\\
+       |   / \\
+       |
+    --------
+    """
+]
 
 def mostrar_menu():
     print("\n" + "="*30)
@@ -62,6 +128,12 @@ def sobre_jogo():
     print("Jogo desenvolvido em Python")
     input("\nPressione Enter para voltar...")
 
+def mostrar_forca(erros, max_erros):
+    """Mostra a arte ASCII da forca de acordo com os erros"""
+    # Ajusta para mostrar a arte completa quando chegar no máximo de erros
+    etapa = min(erros, len(hangman_art) - 1)
+    print(hangman_art[etapa])
+
 def jogar(categoria=None, tentativas=6):
     if categoria:
         palavra_secreta = random.choice(palavras[categoria])
@@ -73,36 +145,40 @@ def jogar(categoria=None, tentativas=6):
 
     letras_descobertas = ["_" for _ in palavra_secreta]
     letras_erradas = []
+    max_erros = tentativas
 
     print(f"\nCOMEÇANDO O JOGO! POSSUI ({tentativas} tentativas)")
 
     while tentativas > 0 and "_" in letras_descobertas:
-            print("\nPalavra:", " ".join(letras_descobertas))
-            print("Tentativas restantes:", tentativas)
-            if letras_erradas:
-                print("Letras erradas:", ", ".join(letras_erradas))
-            
-            palpite = input("Digite uma letra: ").lower()
+        mostrar_forca(len(letras_erradas), max_erros)
+        print("\nPalavra:", " ".join(letras_descobertas))
+        print("Tentativas restantes:", tentativas)
+        if letras_erradas:
+            print("Letras erradas:", ", ".join(letras_erradas))
+        
+        palpite = input("Digite uma letra: ").lower()
 
-            if len(palpite) != 1 or not palpite.isalpha():
-                print("Entrada inválida. Digite apenas UMA letra.")
-                continue
-            
-            if palpite in letras_descobertas or palpite in letras_erradas:
-                print("Você já tentou esta letra!")
-                continue
+        if len(palpite) != 1 or not palpite.isalpha():
+            print("Entrada inválida. Digite apenas UMA letra.")
+            continue
+        
+        if palpite in letras_descobertas or palpite in letras_erradas:
+            print("Você já tentou esta letra!")
+            continue
 
-            if palpite in palavra_secreta:
-                for i, letra in enumerate(palavra_secreta):
-                    if letra == palpite:
-                        letras_descobertas[i] = palpite
-                print("Letra correta!") 
+        if palpite in palavra_secreta:
+            for i, letra in enumerate(palavra_secreta):
+                if letra == palpite:
+                    letras_descobertas[i] = palpite
+            print("Letra correta!") 
+        else:
+            letras_erradas.append(palpite)
+            tentativas -= 1
+            print(f"Letra incorreta! Restam {tentativas} tentativas.")
 
-            else:
-                letras_erradas.append(palpite)
-                tentativas -= 1
-                print(f"Letra incorreta! Restam {tentativas} tentativas.")
-
+    # Mostra o estado final da forca
+    mostrar_forca(len(letras_erradas), max_erros)
+    
     if "_" not in letras_descobertas:
         pontos = calcular_pontuacoes(palavra_secreta, tentativas, len(letras_erradas))
         historico_pontuacoes.append(pontos)
