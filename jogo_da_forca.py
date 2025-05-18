@@ -1,4 +1,5 @@
 import random
+from historico import registrar_pontuacao, carregar_historico
 
 historico_pontuacoes = []
 
@@ -135,67 +136,63 @@ def mostrar_forca(erros, max_erros):
     print(hangman_art[etapa])
 
 def jogar(categoria=None, tentativas=6):
-    if categoria:
-        palavra_secreta = random.choice(palavras[categoria])
-    else:
-        todas_palavras = []
-        for cat in palavras.values():
-            todas_palavras.extend(cat)
-        palavra_secreta = random.choice(todas_palavras)
-
+    palavra_secreta = random.choice(palavras[categoria]) if categoria else random.choice(sum(palavras.values(), []))
     letras_descobertas = ["_" for _ in palavra_secreta]
     letras_erradas = []
-    max_erros = tentativas
 
-    print(f"\nCOMEÇANDO O JOGO! POSSUI ({tentativas} tentativas)")
+    print(f"\nCOMEÇANDO O JOGO! ({tentativas} tentativas)")
 
     while tentativas > 0 and "_" in letras_descobertas:
-        mostrar_forca(len(letras_erradas), max_erros)
+        print(hangman_art[len(letras_erradas)])
         print("\nPalavra:", " ".join(letras_descobertas))
         print("Tentativas restantes:", tentativas)
         if letras_erradas:
             print("Letras erradas:", ", ".join(letras_erradas))
         
         palpite = input("Digite uma letra: ").lower()
-
         if len(palpite) != 1 or not palpite.isalpha():
-            print("Entrada inválida. Digite apenas UMA letra.")
+            print("Erro: Digite UMA letra válida (a-z).")
             continue
-        
-        if palpite in letras_descobertas or palpite in letras_erradas:
-            print("Você já tentou esta letra!")
+
+        if palpite in letras_descobertas + letras_erradas:
+            print("Letra repetida!")
             continue
 
         if palpite in palavra_secreta:
-            for i, letra in enumerate(palavra_secreta):
-                if letra == palpite:
-                    letras_descobertas[i] = palpite
-            print("Letra correta!") 
+            letras_descobertas = [palpite if letra == palpite else lt for lt, letra in zip(letras_descobertas, palavra_secreta)]
         else:
             letras_erradas.append(palpite)
             tentativas -= 1
-            print(f"Letra incorreta! Restam {tentativas} tentativas.")
 
-    # Mostra o estado final da forca
-    mostrar_forca(len(letras_erradas), max_erros)
-    
+    print(hangman_art[len(letras_erradas)])  # Mostra estado final
+
     if "_" not in letras_descobertas:
         pontos = calcular_pontuacoes(palavra_secreta, tentativas, len(letras_erradas))
-        historico_pontuacoes.append(pontos)
-        print(f"\n🌟 Pontuação: {pontos} (Melhor: {max(historico_pontuacoes) if historico_pontuacoes else 'N/A'})")
-        print(f"\nPARABÉNS! Você acertou: {palavra_secreta.upper()}")
+        dificuldade = "Fácil" if tentativas > 6 else "Normal" if tentativas == 6 else "Difícil"
+        #print(f"\nDEBUG: Antes de registrar pontuação")
+        registrar_pontuacao(pontos, palavra_secreta, dificuldade)
+        #print(f"\nDEBUG: Depois de registrar pontuação")
+        print(f"\n🌟 Pontuação: {pontos}")
     else:
-        print(f"\nFIM DE JOGO! A palavra era: {palavra_secreta.upper()}")
+        print(f"\nFim de jogo! A palavra era: {palavra_secreta.upper()}")
 
 def calcular_pontuacoes(palavra, tentativas_restantes, erros):
     """A pontuação é calculada baseada em:
     - Tamanho da palavra
     - Tentativas não usadas
     - Erros cometidos"""
-    pontos = len(palavra) * 5
-    pontos += tentativas_restantes * 2
-    pontos -= erros * 3
+    pontos = len(palavra) * 5 + tentativas_restantes * 2 - erros * 3
     return max(10, pontos)
+
+def mostrar_estatisticas():
+    historico = carregar_historico()
+    if not historico:
+        print("\n⚠️ Nenhuma pontuação registrada.")
+    else:
+        print("\n📊 ESTATÍSTICAS")
+        print(f"🎯 Melhor pontuação: {max(h['pontos'] for h in historico)}")
+        print(f"📅 Última vitória: {historico[-1]['data']}")
+        print(f"🔠 Palavra: {historico[-1]['palavra'].upper()} (Dificuldade: {historico[-1]['dificuldade']})")
 
 def main():
     config = {
@@ -227,7 +224,7 @@ def main():
                 config["tentativas"] = tentativas
                 print(f"Dificuldade alterada para {tentativas} tentativas")
         elif opcao == 4:
-            print("\nESTATÍSTICAS (em desenvolvimento)")
+            mostrar_estatisticas()
             input("Pressione Enter para continuar...")
         elif opcao == 5:
             sobre_jogo()
