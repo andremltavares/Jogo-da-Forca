@@ -27,7 +27,6 @@ A complete Hangman implementation with robust validation and category system.
 jogo-da-forca/
 ├── jogo_da_forca.py    # Main code
 ├── historico.py    # History management
-├── historico.json    # Game data (auto-generated)
 ├── .gitignore    # Ignores temporary files
 ├── README.md           # Documentation
 ```
